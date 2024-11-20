@@ -1,5 +1,6 @@
-//importar biblioteca Express;
+//importa biblioteca do Express;
 import express from "express";
+import routes from "./src/routes/postsRoutes.js";
 
 //Array para guardar nosso objetos
 const posts = [
@@ -37,39 +38,29 @@ const posts = [
 
 //declaração do Express como uma função
 const app = express();
-app.use(express.json());
+routes(app);
 
-/*
-A função listen recebe dois valores,sendo primeiro a porta e segundo deixamos em vazio,
-o comando => { } é uma arrow function
-*/
+//Inicialização do servidor na porta 3000
 app.listen(3000, () => {
     console.log("Servidor escutando...");
 });
 
-/*
-Criamos uma rota para este servidor e o que o servidor responderá.
-O primeiro parâmetro é a definição da rota que o cliente usará pra obter a rota deste servidor, ou seja,
-quando houver uma conexão neste rota e nesta porta.
-O segundo parâmetro é uma função que recebe outros dois parâmetros, (req = requisição, res = resposta).
-Enviamos uma resposta em texto com o status em 200.*/
-app.get("/posts", (req, res) =>{
-    res.status(200).json(posts);
-});
 
-/*A função recebe um número id, entra no array de posts e depois entra em cada um dos objetos.
-Se o id do parâmetro for igual ao do array, ele retornará este id como número*/
+
+/*
+//A função recebe um número id, entra no array de posts e depois entra em cada um dos objetos.
+//Se o id do parâmetro for igual ao do array, ele retornará este id como número
 function buscarPost(id){
     return posts.findIndex((post) => {
         return post.id === Number(id);
     })
 }
 
-/*O : indica para o express que a informação será substituida por um dado variável,
-a constante index faz a busca na função e passa os parâmetros para a requisição.
-O retorno posts[index] passa a posição do post que queremos retornar
-*/
+//O : indica para o express que a informação será substituida por um dado variável,
+//a constante index faz a busca na função e passa os parâmetros para a requisição.
+//O retorno posts[index] passa a posição do post que queremos retornar
 app.get("/posts/:id", (req, res) =>{
     const index = buscarPost(req.params.id);
     res.status(200).json(posts[index]);
 });
+*/
