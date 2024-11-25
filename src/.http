@@ -1,0 +1,18 @@
+//GET http://localhost:3000/posts/
+
+//POST http://localhost:3000/posts/
+//Content-Type: application/json
+
+//{
+//  "descricao": "Teste 3 API",
+//  "imgurl": "http://placecats.com/millie/300/150",
+//  "alt": "Criando novo post"
+//}
+
+POST http://localhost:3000/posts/
+Content-Type: multipart/form-data
+
+--boundary
+Content-Disposition: form-data; name="image"; filename="C:/Users/pablo/Downloads/faze.png"
+Content-Type: image/jpeg
+--boundary--
